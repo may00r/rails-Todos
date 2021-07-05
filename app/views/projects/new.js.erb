@@ -14,16 +14,21 @@ $("#submit_category").click( function (e) {
     console.log('Posting the following: ', formData);
     console.log(url);
 
-    $.ajax({
-        url: url,
-        data: formData,
-        type: 'POST',
-        dataType : 'json',
-        success: function (data) {
-            console.log(data);
-            $("#project-modal").modal('hide');
-            $("#add")[0].click();
+    if (!($(this).parents("form")[0].checkValidity())) {
+        if ($(this).parents("form")[0].reportValidity) {
+            $(this).parents("form")[0].reportValidity();
         }
-    });
-    
+    } else {
+        $.ajax({
+            url: url,
+            data: formData,
+            type: 'POST',
+            dataType : 'json',
+            success: function (data) {
+                console.log(data);
+                $("#project-modal").modal('hide');
+                $("#add")[0].click();
+            }
+        });
+    }
 });

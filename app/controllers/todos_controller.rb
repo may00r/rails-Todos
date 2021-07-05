@@ -33,7 +33,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to projects_path, notice: "Todo was successfully created." }
+        format.html { redirect_to projects_path }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.update(todo_params)
         format.js
-        format.html { redirect_to projects_path, notice: "Todo was successfully updated." }
+        format.html { redirect_to projects_path }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit, status: :unprocessable_entity }
