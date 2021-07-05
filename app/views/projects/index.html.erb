@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="headTitle">
+    <h1 id="h1">Задачи</h1>
+  </div>
+  
+  <div class="add">
+    <%= link_to '+', new_todo_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#todo-modal', id: 'add'} %>
+
+  </div>
+</div>
+
+<div class="content">
+  <%= render @projects %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<div id="todo-modal" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div id="project-modal" class="modal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+
+<%= link_to '+', new_project_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#project-modal', id: 'project-modal__button'} %>
+

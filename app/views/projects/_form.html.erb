@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h5 id="h5">Новая категория</h5>
+</div>
+
+<%= form_with(model: project) do |form| %>
+<div class="modal-body">
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :title , class: 'form-control', placeholder: 'Категория', required: true %>
+  </div>
+
+</div>
+
+<div class="modal-footer" id="modal-footer">
+  <div class="actions">
+    <%= link_to 'ОТМЕНА', projects_path, class: 'btn btn-secondary btn-lg btn-width', id: 'cancel_category' %>
+    <%= form.submit 'ОК', class: 'btn btn-primary btn-lg btn-width', id: 'submit_category' %>
+  </div>
+
+</div>
+<% end %>

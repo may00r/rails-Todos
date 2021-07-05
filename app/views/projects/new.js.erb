@@ -1,0 +1,29 @@
+$("#project-modal").find(".modal-content").html("<%= j (render 'new') %>");
+$("#project-modal").modal('show');
+$("#cancel_category").click( function (e) {
+    e.preventDefault();
+    $("#project-modal").modal('hide');
+    $("#todo-modal").modal('show');
+});
+
+$("#submit_category").click( function (e) {
+    e.preventDefault();
+
+    var formData = $(this).parents("form").serialize();
+    var url = $(this).parents("form").prop('action');
+    console.log('Posting the following: ', formData);
+    console.log(url);
+
+    $.ajax({
+        url: url,
+        data: formData,
+        type: 'POST',
+        dataType : 'json',
+        success: function (data) {
+            console.log(data);
+            $("#project-modal").modal('hide');
+            $("#add")[0].click();
+        }
+    });
+    
+});

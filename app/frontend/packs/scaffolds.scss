@@ -1,0 +1,155 @@
+body {
+	background-color: #f8f8f8 !important;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+body,
+p,
+ol,
+ul {
+	font-family: verdana, arial, helvetica, sans-serif !important;
+	font-size: 13px !important;
+	line-height: 18px;
+}
+
+.header {
+	background-color: #39b1d8;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	.headTitle {
+		width: 400px;
+		// margin-left: auto;
+		#h1 {
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			color: #ffffff;
+			font-weight: 200;
+		}
+	}
+	.add {
+		font-size: 24pt;
+		font-weight: 200;
+		color: #ffffff;
+		//width: 100px;
+		// margin-left: auto;
+		// margin-right: 10px;
+		position: absolute;
+		right: 2%;
+		a {
+			text-decoration: none;
+			color: #ffffff;
+			background-color: #39b1d8;
+		}
+	}
+}
+
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	align-items: flex-start;
+	justify-content: center;
+	.tasks {
+		display: block;
+		background-color: #fff;
+		border: 1px solid #d2d2d2;
+		min-width: 300px;
+		min-height: 150px;
+		margin: 20px 10px 10px 0;
+		ul {
+			list-style: none;
+			margin: 0;
+			padding-inline: 10px;
+			li {
+				hr {
+					margin: 10px -10px;
+					border: 1px solid #f1f1f1;
+				}
+			}
+			.check {
+				padding: 10px;
+				font-size: 1.1em;
+			}
+		}
+	}
+}
+
+.isComplited {
+	margin-right: 12px;
+	filter: hue-rotate(-20deg) brightness(1.2);
+}
+:checked + label {
+	text-decoration: line-through;
+}
+
+#h5 {
+	font-size: 1em;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.field {
+	.isComplited {
+		display: none;
+	}
+}
+
+.modal-body {
+	.field {
+		margin: 1em 1em;
+		* {
+			padding: 0.5rem !important;
+			border-radius: 0 !important;
+			font-size: 1rem !important;
+		}
+	}
+}
+
+.modal-footer {
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.btn-width {
+	width: 200px !important;
+}
+
+.btn {
+	padding: 1em 1em !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	font-size: 1em !important;
+}
+
+.btn-secondary {
+	background-color: #9f9f9f !important;
+}
+
+.btn-primary {
+	background-color: #39b1d8 !important;
+}
+
+.modal-header {
+	justify-content: center !important;
+}
+
+.modal-footer {
+	border-top: 0 !important;
+}
+
+.modal-content {
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+
+#project-modal__button {
+	display: none;
+}
