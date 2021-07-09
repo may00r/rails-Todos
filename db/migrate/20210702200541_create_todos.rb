@@ -2,7 +2,7 @@ class CreateTodos < ActiveRecord::Migration[6.1]
   def change
     create_table :todos do |t|
       t.string :text
-      t.boolean :isComplited
+      t.boolean :isComplited, default: false
       # :null => false, :default =>  false
       #Ex:- :default =>''
       t.belongs_to :project, index: true

@@ -13,7 +13,7 @@ data = HashWithIndifferentAccess.new(YAML::load_file(File.join(Rails.root, 'db',
     data[:projects].each do |project|
         p = Project.new(title: project[:title])
         project[:todos].each do |todo|
-            p.todos << Todo.create(text: todo[:text], isComplited: todo[:isComplited], project_id: p.id)
+            p.todos << Todo.create(text: todo[:text], isComplited: false, project_id: p.id)
         end
         p.save!
     end
