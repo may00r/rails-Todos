@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json

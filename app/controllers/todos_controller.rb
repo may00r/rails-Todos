@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   # GET /todos or /todos.json
@@ -7,6 +8,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.json
     end
   end
 
