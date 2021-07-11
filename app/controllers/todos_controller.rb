@@ -1,80 +1,41 @@
 class TodosController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :get_project
   before_action :set_todo, only: %i[ show edit update destroy ]
 
-  # GET /todos or /todos.json
+  # GET /project/:id/todos
   def index
-    @todos = Todo.all
-    respond_to do |format|
-      format.html
-      format.js
-      format.json
-    end
+    @todos = @project.todos
+    render :json => @todos.to_json(:except => [:created_at, :updated_at])
   end
 
-  # GET /todos/1 or /todos/1.json
-  def show
-  end
-
-  # GET /todos/new
-  def new
-    @todo = Todo.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  # GET /todos/1/edit
-  def edit
-  end
-
-  # POST /todos or /todos.json
+  # POST /project/:id/todos
   def create
-    @todo = Todo.new(todo_params)
-
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to projects_path }
-        format.json { render :show, status: :created, location: @todo }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
+    @todo = @project.todos.build(todo_params)
+    if @todo.save
+      render :json => @todo.to_json()
     end
   end
 
-  # PATCH/PUT /todos/1 or /todos/1.json
+  # PATCH/PUT /project/:id/todos/:id
   def update
-    respond_to do |format|
-      if @todo.update(todo_params)
-        format.js
-        format.html { redirect_to projects_path }
-        format.json { render :show, status: :ok, location: @todo }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /todos/1 or /todos/1.json
-  def destroy
-    @todo.destroy
-    respond_to do |format|
-      format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
-      format.json { head :no_content }
+    if @todo.update(todo_params)
+      render :json => @todo.to_json()
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
-      @todo = Todo.find(params[:id])
+      @todo = @project.todos.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def todo_params
       params.require(:todo).permit(:text, :isComplited, :project_id)
+    end
+
+    def get_project
+      @project = Project.find(params[:project_id])
     end
 end

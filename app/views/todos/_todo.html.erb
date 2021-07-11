@@ -1,8 +1,0 @@
-<%= form_with(model: todo, local: false) do |form| %>
-
-    <div class="controls">
-        <%= form.check_box :isComplited, class: 'isComplited' %>
-        <%= form.label :text, form.object.text %>
-    </div>
-
-<% end %>
