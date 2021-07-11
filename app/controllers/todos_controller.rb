@@ -13,7 +13,7 @@ class TodosController < ApplicationController
   def create
     @todo = @project.todos.build(todo_params)
     if @todo.save
-      render :json => @todo.to_json()
+      render :json => @project.to_json(:include => [:todos], :except => [:created_at, :updated_at])
     end
   end
 
